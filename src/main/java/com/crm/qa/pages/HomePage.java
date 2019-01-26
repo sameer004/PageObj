@@ -10,11 +10,11 @@ import com.crm.qa.base.TestBase;
 
 public class HomePage extends TestBase {
 
-	@FindBy(xpath = "//td[contains(text(),'User: Naveen K')]")
+	@FindBy(xpath = "//td[contains(text(),'Sameer Samir')]")
 	@CacheLookup
 	WebElement userNameLabel;
 
-	@FindBy(xpath = "//a[contains(text(),'Contacts')]")
+	@FindBy(xpath = "//a[@title='Contacts']")
 	WebElement contactsLink;
 	
 	@FindBy(xpath = "//a[contains(text(),'New Contact')]")
@@ -33,6 +33,7 @@ public class HomePage extends TestBase {
 	}
 	
 	public String verifyHomePageTitle(){
+		
 		return driver.getTitle();
 	}
 	

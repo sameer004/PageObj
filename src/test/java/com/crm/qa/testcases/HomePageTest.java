@@ -30,30 +30,34 @@ public class HomePageTest extends TestBase {
 	public void setUp() {
 		initialization();
 		testUtil = new TestUtil();
-		contactsPage = new ContactsPage();
 		loginPage = new LoginPage();
+ 		contactsPage = new ContactsPage();
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		testUtil.waitForPageLoaded();
+
 	}
 	
 	
 	@Test(priority=1)
 	public void verifyHomePageTitleTest(){
+
 		String homePageTitle = homePage.verifyHomePageTitle();
-		Assert.assertEquals(homePageTitle, "CRMPRO","Home page title not matched");
+		Assert.assertEquals(homePageTitle, "CRMPRO");
 	}
 	
-	@Test(priority=2)
-	public void verifyUserNameTest(){
-		testUtil.switchToFrame();
-		Assert.assertTrue(homePage.verifyCorrectUserName());
-	}
 	
-	@Test(priority=3)
-	public void verifyContactsLinkTest(){
-		testUtil.switchToFrame();
-		contactsPage = homePage.clickOnContactsLink();
-	}
-	
+	  @Test(priority=2) 
+	  public void verifyUserNameTest(){ 
+		  testUtil.switchToFrame();
+	  Assert.assertTrue(homePage.verifyCorrectUserName()); 
+	  }
+	  
+	  @Test(priority=3) 
+	  public void verifyContactsLinkTest()
+	  {
+	  testUtil.switchToFrame(); contactsPage = homePage.clickOnContactsLink(); 
+	  }
+	 
 	
 	
 	@AfterMethod
