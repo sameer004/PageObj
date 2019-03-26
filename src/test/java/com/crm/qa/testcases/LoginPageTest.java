@@ -38,6 +38,7 @@ public class LoginPageTest extends TestBase{
 	@Test(priority=3)
 	public void loginTest(){
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		ngWebDriver.waitForAngularRequestsToFinish();
 	}
 	
 	

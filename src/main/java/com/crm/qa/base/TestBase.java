@@ -11,10 +11,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.openqa.selenium.support.ui.FluentWait;
 
 import com.crm.qa.util.TestUtil;
 import com.crm.qa.util.WebEventListener;
+import com.paulhammant.ngwebdriver.NgWebDriver;
+ 
 
 public class TestBase {
 	
@@ -22,6 +23,7 @@ public class TestBase {
 	public static Properties prop;
 	public  static EventFiringWebDriver e_driver;
 	public static WebEventListener eventListener;
+	 public static NgWebDriver ngWebDriver;
 	
 	public TestBase(){
 		try {
@@ -62,7 +64,14 @@ public class TestBase {
 		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 		
+		//new lines added @sudhir
+		driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
+		ngWebDriver = new NgWebDriver((JavascriptExecutor) driver);
+		
+		
 		driver.get(prop.getProperty("url"));
+	
+		 
 		
 	}
 	
